@@ -16,7 +16,7 @@ use Storm::Throttle::Cache::Budget;
 has kestrel_client => (is=>'rw', lazy_build=>1);
 has query => (is=>'rw');
 has asp_id => (is=>'rw');
-has adunit_typ => (is=>'rw');
+has throttle_type => (is=>'rw');
 has publisher_id => (is=>'rw');
 has source_id => (is=>'rw');
 has subid_id => (is=>'rw');
@@ -81,12 +81,13 @@ sub update {
 
 sub pick_usage_server {
     my ($self, $args) = @_;
-    my @rules =({Field  => 'node',  Values => ["mp21.namimedia.com", "mp22.namimedia.com", "mp23.namimedia.com", "mp24.namimedia.com"]});
+    # TODO: get the node values from a configuration file
+    my @rules =({Field  => 'node',  Values => ["host1.foo.com", "host2.foo.com"]});
     my $randomizer = Randomize->new(\@rules);
     my $random_hash = $randomizer->generate();
     return $random_hash->{node};
 }
-has usage_detail_queue => (is=>'rw', isa=>'Str', default=> 'adunit_queue');
+has usage_detail_queue => (is=>'rw', isa=>'Str', default=> 'throttle_queue');
 sub send_usage {
     my ($self, $args) = @_;
     my $usage = $args->{usage};
@@ -141,7 +142,7 @@ sub _build_feed_ids {
 sub _build_budget_cache {
     my $self = shift;
     my $path = $self->budget_cache_host . ":" . $self->budget_cache_port;
-    my $budget_cache = Storm::Throttle::Cache::Budget->new({name=>"adunit_budget", 
+    my $budget_cache = Storm::Throttle::Cache::Budget->new({name=>"throttle_budget", 
 							       redis_path=> $path,
 							       dbindex=>$self->budget_dbindex});
     return $budget_cache;

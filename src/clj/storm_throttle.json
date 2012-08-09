@@ -1,0 +1,51 @@
+{
+   "usage-detail": {
+                     "p" : 1,
+		     "port" : 12021,
+		     "host" : "10.0.147.102"
+                   },
+   "parser": {	
+                 "access-log-path": "/foo",
+		 "p" : 3
+                 },
+    "budget-cache" : {	 
+              "path": "/home/matt/data/bdb/budget"              },	      
+    "count-cache" : {	 
+              "path": "/home/matt/data/bdb/accumulator"
+              },
+    "tail" : {	 
+              "path": "/home/matt/data/bdb/accumulator",
+	      "summarize-update-period": 5000,
+	      "p": 1
+              }, 
+    "accumulate" : {
+             "p" : 3,
+	     "weight" : { "p" : 3},
+	     "sample-period" : 5000,
+	     "initial-delay": 2000,
+	      "count-cache-host": "10.0.147.102",
+	      "count-cache-port": 6379,
+	      "count-cache-db-index" : 6,
+              },   
+    "scorekeeper" : {
+             "p" : 3,
+	     "cache-db-index": 10,
+	     "sample-period" : 5000,
+	     "initial-delay": 2000,
+	      "budget-cache" : { "path": "/home/matt/data/bdb/budget" },
+	      "throttle-database": {
+                   "host": "10.0.147.102",
+                   "port": 3306,
+                   "db-user": "test",
+                   "db-password": "test123",
+                   "db-name": "throttleSettings"
+              	  }
+              },
+    "governor" : {
+             "p" : 3,
+	      "budget-cache-path" : "10.0.147.102",
+	      "nodes" :["localhost"],
+	      "proxy-port" : 6379,
+	      "dbindex" : 10
+              }   
+}
