@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "starting storm supervisor..."
+exec storm supervisor

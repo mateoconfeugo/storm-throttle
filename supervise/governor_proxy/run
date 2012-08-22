@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "throttling governor proxy"
+java -jar dk-storm-throttle-governor-proxy-0.0.1-SNAPSHOT-standalone.jar governor-proxy

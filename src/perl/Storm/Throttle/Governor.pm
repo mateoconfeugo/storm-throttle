@@ -1,7 +1,6 @@
 package Storm::Throttle::Governor;
 use Moose;
 
-use lib qw(/home/matt/repository/177/src/Nami-Flow-AdUnit-Throttle/src/perl);
 use CHI;
 use IO::Socket;
 use Fcntl ':flock'; 

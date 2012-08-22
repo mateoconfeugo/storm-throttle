@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "starting  zookeeper for storm ..."
+# TODO: Figure out how to start this properly
+cd /home/matt/zookeeper-3.3.5/
+exec sudo  java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /home/matt/zookeeper-3.3.5/bin/../build/classes:/home/matt/zookeeper-3.3.5/bin/../build/lib/*.jar:/home/matt/zookeeper-3.3.5/bin/../zookeeper-3.3.5.jar:/home/matt/zookeeper-3.3.5/bin/../lib/log4j-1.2.15.jar:/home/matt/zookeeper-3.3.5/bin/../lib/jline-0.9.94.jar:/home/matt/zookeeper-3.3.5/bin/../src/java/lib/*.jar:/home/matt/zookeeper-3.3.5/bin/../conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /home/matt/zookeeper-3.3.5/bin/../conf/zoo.cfg
+

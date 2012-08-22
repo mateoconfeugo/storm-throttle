@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "throttling topology"
+# TODO: GET location from environment variable
+storm jar dk-storm-throttle-0.0.1-SNAPSHOT-standalone.jar dk.storm.throttle.topology  storm-throttling-topo
