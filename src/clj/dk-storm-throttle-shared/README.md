@@ -1,6 +1,7 @@
 # dk-storm-throttle-shared
 
-Library contain the spouts and bolts used by the topology as well as common functionality shared between topology and 
+Library contain the spouts and bolts used by the topology as well as common functionality shared between topology 
+and the governor proxy.
 
 ## Usage
 
