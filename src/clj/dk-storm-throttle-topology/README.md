@@ -1,8 +1,10 @@
 # dk-storm-throttle-topology
 
-I'm an app. Or maybe I'm a library? I haven't decided yet. 
+The usage spout streams usage-detail records recieved from delivery servers to the accumlator bolt which then totals up all the usage across the nodes.This summary is emitted to the scorekeeprer bolt.
 
-The choice is up to you!
+The scorekeeper assembles a budget of allocated query request and current count for the feed source tuples. These budget item tuples are emitted to the govenor bolt that updates the budget cache.
+
+The budget records are streamed as jsonified tuples from the centralized budget cache via client to the governor proxy running on each delivery node.
 
 ## Usage
 
@@ -10,6 +12,6 @@ FIXME
 
 ## License
 
-Copyright © 2012 FIXME
+Copyright © 2012 Matt burns
 
 Distributed under the Eclipse Public License, the same as Clojure.
