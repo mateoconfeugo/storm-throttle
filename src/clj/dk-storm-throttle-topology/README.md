@@ -8,7 +8,7 @@ The budget records are streamed as jsonified tuples from the centralized budget 
 
 ## Usage
 
-FIXME
+Matt Burns
 
 ## License
 
