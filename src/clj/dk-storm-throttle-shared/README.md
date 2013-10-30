@@ -1,15 +1,16 @@
 # dk-storm-throttle-shared
 
-I'm an app. Or maybe I'm a library? I haven't decided yet. 
-
-The choice is up to you!
+Library contain the spouts and bolts used by the topology as well as common functionality shared between topology and 
 
 ## Usage
 
-FIXME
+
+(:require [dk.storm.throttle.config :refer :all])
+(:use dk.storm.throttle.api)
+
 
 ## License
 
-Copyright © 2012 FIXME
+Copyright © 2012 Matt Burns
 
 Distributed under the Eclipse Public License, the same as Clojure.
