@@ -8,10 +8,10 @@ The budget records are streamed as jsonified tuples from the centralized budget 
 
 ## Usage
 
-Matt Burns
+storm jar dk-storm-throttle-0.0.1-SNAPSHOT-standalone.jar dk.storm.throttle.topology  storm-throttling-topo
 
 ## License
 
-Copyright © 2012 Matt burns
+Copyright © 2012 Matt Burns
 
 Distributed under the Eclipse Public License, the same as Clojure.
