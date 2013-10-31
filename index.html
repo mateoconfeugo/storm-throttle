@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Storm-throttle by mateoconfeugo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Storm-throttle</h1>
+        <p>Distributed govenor that throttles requests access to a resource</p>
+
+        <p class="view"><a href="https://github.com/mateoconfeugo/storm-throttle">View the Project on GitHub <small>mateoconfeugo/storm-throttle</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/mateoconfeugo/storm-throttle/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/mateoconfeugo/storm-throttle/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/mateoconfeugo/storm-throttle">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Purpose:  Sources and publishers request from delivery servers ads.  These requestors have a budget of how many queries allowed per feed.  The storm throttle limits the number search queries allowed access to feeds across a distributed set of delivery servers and is updated in real time.</p>
+
+<p>Mechanics:
+The usage spout streams usage-detail records recieved from delivery servers to the accumlator bolt which then totals up all the usage across the nodes.This summary is  emitted to the scorekeeprer bolt. </p>
+
+<p>The scorekeeper assembles a budget of allocated query request and current count for the feed source tuples. These budget item tuples are emitted to the govenor bolt that updates the budget cache.</p>
+
+<p>The budget records are streamed as jsonified tuples from the centralized budget cache via client to the governor proxy running on each delivery node.</p>
+
+<p>The proxy inserts the tuples into the budget caches on each of the delivery servers. The delivery server consumes these budget items by grabbing the budget records out of the cache and decoding the json into proper data structure.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/mateoconfeugo">mateoconfeugo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
